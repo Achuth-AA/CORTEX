@@ -317,7 +317,7 @@ export default function Home() {
               Get 15% off your first order
             </h2>
             <p className="mx-auto mt-4 text-white/85">
-              Join the Lumina list for early drops, member-only deals, and free
+              Join the Velora list for early drops, member-only deals, and free
               shipping on orders over $150.
             </p>
 
@@ -357,7 +357,7 @@ export default function Home() {
           <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
             <div>
               <Link to="/" className="font-display text-2xl font-extrabold tracking-tight">
-                <span className="text-gradient">LUMINA</span>
+                <span className="text-gradient">VELORA</span>
               </Link>
               <p className="mt-3 max-w-xs text-sm text-zinc-500">
                 A curated demo storefront built with React, Tailwind, and Framer
@@ -384,7 +384,7 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-black/10 pt-6 text-sm text-zinc-500 dark:border-white/10 sm:flex-row">
-            <p>© 2026 Lumina. A demo storefront — all data is local & for demonstration only.</p>
+            <p>© 2026 Velora. A demo storefront — all data is local & for demonstration only.</p>
             <p className="flex items-center gap-2">
               Crafted with <span className="text-rose-500">♥</span> using React + Tailwind
             </p>

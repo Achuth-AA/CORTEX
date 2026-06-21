@@ -50,7 +50,7 @@ export default function Login() {
         >
           <h1 className="font-display text-3xl font-extrabold">Welcome back</h1>
           <p className="mt-2 text-sm text-zinc-500">
-            Log in to your Lumina account.
+            Log in to your Velora account.
           </p>
 
           <div className="mt-4 rounded-xl bg-accent/10 p-3 text-xs text-accent">

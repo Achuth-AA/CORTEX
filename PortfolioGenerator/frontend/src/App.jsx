@@ -8,7 +8,7 @@ import ScorePanel from "./components/ScorePanel";
 import LivePreview from "./components/LivePreview";
 import History from "./components/History";
 
-const STORAGE_KEY = "portfolio-generator-draft";
+const STORAGE_KEY = "foliofy-draft";
 
 const SAMPLE = {
   fullName: "Ada Lovelace",
@@ -154,7 +154,7 @@ export default function App() {
         <div className="logo">
           <span className="logo-mark">P</span>
           <div>
-            <strong>PortfolioGenerator</strong>
+            <strong>Foliofy</strong>
             <small>fill it in · preview live · download a deploy-ready ZIP</small>
           </div>
         </div>
@@ -242,7 +242,7 @@ export default function App() {
       </section>
 
       <footer className="page-footer">
-        <span>PortfolioGenerator · React + Flask + SQLite</span>
+        <span>Foliofy · React + Flask + SQLite</span>
       </footer>
     </div>
   );

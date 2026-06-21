@@ -46,7 +46,7 @@ def _readme(data: dict, score: dict) -> str:
 > {data.get('tagline') or f'Personal portfolio for {name}, {title}.'}
 
 A self-contained, responsive personal portfolio generated with
-**PortfolioGenerator**. No build step, no dependencies — just open `index.html`.
+**Foliofy**. No build step, no dependencies — just open `index.html`.
 
 ![Theme](https://img.shields.io/badge/theme-{theme}-6d5efc) \
 ![Completeness](https://img.shields.io/badge/completeness-{score['score']}%25%20({score['grade']})-brightgreen) \
@@ -104,7 +104,7 @@ docker run -p 8080:80 my-portfolio   # http://localhost:8080
 ## 🛠 Customise
 
 Everything is plain HTML/CSS/JS — edit freely. To regenerate from changed data,
-edit `data.json` and re-run PortfolioGenerator, or tweak the files directly.
+edit `data.json` and re-run Foliofy, or tweak the files directly.
 
 ## 👤 About
 
@@ -117,7 +117,7 @@ edit `data.json` and re-run PortfolioGenerator, or tweak the files directly.
 
 ---
 
-_Generated with [PortfolioGenerator](#) · theme `{theme}` · completeness {score['score']}% ({score['grade']})._
+_Generated with [Foliofy](#) · theme `{theme}` · completeness {score['score']}% ({score['grade']})._
 """
 
 

@@ -65,7 +65,7 @@ export default function Register() {
         className="card-surface rounded-3xl p-8 shadow-card"
       >
         <h1 className="font-display text-3xl font-extrabold">Create account</h1>
-        <p className="mt-2 text-sm text-zinc-500">Join Lumina in seconds.</p>
+        <p className="mt-2 text-sm text-zinc-500">Join Velora in seconds.</p>
 
         <form onSubmit={submit} className="mt-6 space-y-4" noValidate>
           <FloatingInput

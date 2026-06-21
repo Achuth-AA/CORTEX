@@ -12,7 +12,7 @@ const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 // Available promo codes.
 const PROMOS = {
-  LUMINA10: { type: 'percent', value: 10, label: '10% off your order' },
+  VELORA10: { type: 'percent', value: 10, label: '10% off your order' },
   WELCOME15: { type: 'percent', value: 15, label: '15% off your order' },
   FREESHIP: { type: 'shipping', value: 0, label: 'Free shipping' },
 }
@@ -450,7 +450,7 @@ export default function Checkout() {
                   </div>
                   {promoError && <p className="mt-2 text-xs text-rose-500">{promoError}</p>}
                   <p className="mt-2 text-xs text-zinc-400">
-                    Try <span className="font-semibold">LUMINA10</span>, <span className="font-semibold">WELCOME15</span>, or{' '}
+                    Try <span className="font-semibold">VELORA10</span>, <span className="font-semibold">WELCOME15</span>, or{' '}
                     <span className="font-semibold">FREESHIP</span>.
                   </p>
                 </>

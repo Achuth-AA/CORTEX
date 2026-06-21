@@ -189,7 +189,7 @@ def serve_frontend(path):
     if os.path.exists(index_file):
         return send_from_directory(FRONTEND_DIST, "index.html")
     return (
-        "<h1>AI Resume Analyzer API</h1>"
+        "<h1>ResumeIQ API</h1>"
         "<p>The React frontend isn't built yet. In the <code>frontend/</code> folder run "
         "<code>npm install &amp;&amp; npm run dev</code> for development, "
         "or <code>npm run build</code> to serve it from Flask.</p>",

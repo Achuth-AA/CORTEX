@@ -220,7 +220,7 @@ def _footer(data):
     name = e(data.get("fullName") or "Your Name")
     return f"""
   <footer class="footer">
-    <p>© <span id="year"></span> {name}. Built with PortfolioGenerator.</p>
+    <p>© <span id="year"></span> {name}. Built with Foliofy.</p>
   </footer>"""
 
 

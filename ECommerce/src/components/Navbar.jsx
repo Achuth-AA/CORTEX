@@ -82,7 +82,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="font-display text-xl font-extrabold tracking-tight">
           <span className="bg-gradient-to-r from-accent to-accent-violet bg-clip-text text-transparent">
-            LUMINA
+            VELORA
           </span>
         </Link>
 

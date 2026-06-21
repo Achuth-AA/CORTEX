@@ -1,83 +1,83 @@
-# ResumeIQ — AI Resume Analyzer
+# 📄 ResumeIQ
 
-A polished, light‑themed resume analyzer. **Flask API + SQLite** on the backend,
-**React (Vite + Framer Motion)** on the front, **Google Gemini** doing the analysis.
-
-Upload a PDF/DOCX/TXT (or paste text), optionally name a target role, and get an
-animated dashboard: overall score, ATS score, section breakdown, strengths,
-weak spots, actionable fixes, matched/missing ATS keywords and detected skills.
-Every analysis is saved to a local SQLite database and shown in a history panel.
+**An AI résumé analyzer.** Upload a PDF/DOCX/TXT résumé (or paste text),
+optionally target a job role, and get an animated dashboard: an overall score,
+ATS-compatibility score, section breakdowns, strengths & weaknesses, concrete
+improvements, matched/missing ATS keywords, and detected skills — powered by
+**Google Gemini** and saved to a local SQLite database.
 
 ---
 
-## 1. Backend (Flask + SQLite)
+## ✨ Features
 
-```bash
-cd AI-Resume-Analyzer
+- 📤 **Upload or paste** — PDF, DOCX or TXT résumés (text extracted server-side).
+- 🎯 **Target a role** — tailor the analysis and ATS keyword matching to a job.
+- 📊 **Scores & breakdowns** — overall + ATS scores, per-section feedback, animated score rings.
+- 🟢 **Strengths / weaknesses / improvements** — specific, actionable suggestions.
+- 🔑 **ATS keywords** — matched vs. missing keywords for the target role.
+- 🗂 **History** — every analysis is stored in SQLite and re-loadable.
 
-# (recommended) virtual env
-python3 -m venv .venv && source .venv/bin/activate
+---
 
-pip install -r requirements.txt
+## 🛠 Tech stack
 
-# add your Gemini key
-cp .env.example .env
-#   then edit .env → GEMINI_API_KEY=your_real_key
+| Layer | What we used |
+|-------|--------------|
+| **Frontend** | React 18, Vite, Framer Motion (animations) |
+| **Backend** | Python 3, Flask, Flask-CORS |
+| **AI** | **Google Gemini** via `google-generativeai` (default model: Gemini 2.5 Flash) |
+| **Parsing** | `pypdf` (PDF), `python-docx` (DOCX) |
+| **Database** | SQLite (Python stdlib) — `resume_analyzer.db` |
+| **Config** | python-dotenv (`GEMINI_API_KEY`) |
 
-python app.py          # serves the API on http://localhost:5000
+---
+
+## 📁 Project structure
+
+```
+ResumeIQ/  (folder: AI-Resume-Analyzer)
+├── app.py                 # Flask API: file upload, text extraction, Gemini analysis, history
+├── requirements.txt
+├── .env.example           # GEMINI_API_KEY=...
+├── uploads/               # temp file storage during analysis
+├── resume_analyzer.db     # SQLite database (created at runtime)
+└── frontend/
+    ├── index.html
+    ├── vite.config.js     # dev proxy /api → :5000
+    ├── package.json
+    └── src/
+        ├── App.jsx        # nav, hero, upload, results, history
+        ├── api.js
+        ├── useCountUp.js  # animated counters
+        ├── index.css
+        └── components/    # UploadCard, Results, ScoreRing, History, Loader, Confetti, Tilt, Background
 ```
 
-The SQLite database (`resume_analyzer.db`) is created automatically on first run.
+---
 
-Get a free Gemini API key at https://aistudio.google.com/app/apikey
+## 🚀 Getting started
 
-## 2. Frontend (React)
+**1. Backend (Flask + Gemini + SQLite)**
+```bash
+cd AI-Resume-Analyzer
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env        # add GEMINI_API_KEY=<your key>
+python app.py              # API on http://localhost:5000
+```
 
-In a **second terminal**:
-
+**2. Frontend (React + Vite)**
 ```bash
 cd AI-Resume-Analyzer/frontend
 npm install
-npm run dev            # opens http://localhost:5173
+npm run dev                # http://localhost:5173  (proxies /api → :5000)
 ```
 
-The Vite dev server proxies `/api/*` to Flask on port 5000, so just open
-**http://localhost:5173**.
+**Production** — `cd frontend && npm run build`, then `python app.py` serves the
+built app from Flask at `:5000`.
 
-## 3. One‑server production build (optional)
-
-```bash
-cd frontend && npm run build      # outputs to frontend/dist
-cd .. && python app.py            # Flask now serves the built React app at :5000
-```
+> Needs a **Gemini API key** in `.env` for live analysis.
 
 ---
 
-## Project structure
-
-```
-AI-Resume-Analyzer/
-├── app.py               # Flask API + SQLite + Gemini
-├── requirements.txt
-├── .env.example         # copy to .env and add your key
-├── resume_analyzer.db   # created at runtime
-└── frontend/
-    ├── index.html
-    ├── vite.config.js   # /api proxy → Flask
-    └── src/
-        ├── App.jsx
-        ├── api.js
-        ├── index.css    # the light theme + animations
-        └── components/   ScoreRing · UploadCard · Results · History · Background
-```
-
-## API endpoints
-
-| Method | Route | Purpose |
-| ------ | ----- | ------- |
-| GET    | `/api/config`            | whether a Gemini key is configured |
-| POST   | `/api/analyze`           | analyze an uploaded file or pasted text |
-| GET    | `/api/history`           | last 25 analyses |
-| GET    | `/api/history/<id>`      | full result for one analysis |
-| DELETE | `/api/history/<id>`      | delete an analysis |
-| GET    | `/api/stats`             | totals / averages for the hero counters |
+_Part of the workspace alongside Foliofy, SyncScribe, Algoscope, Lumina Chat and Velora._

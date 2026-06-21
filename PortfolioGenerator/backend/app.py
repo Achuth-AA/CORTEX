@@ -1,5 +1,5 @@
 """
-PortfolioGenerator — Flask backend.
+Foliofy — Flask backend.
 
 Endpoints
   GET  /api/health                 service + feature availability
@@ -270,7 +270,7 @@ def serve_frontend(path):
     if os.path.exists(index_file):
         return send_from_directory(FRONTEND_DIST, "index.html")
     return (
-        "<h1>PortfolioGenerator API</h1>"
+        "<h1>Foliofy API</h1>"
         "<p>Frontend isn't built. In <code>frontend/</code> run "
         "<code>npm install &amp;&amp; npm run dev</code> (dev) or "
         "<code>npm run build</code> to serve from Flask.</p>",
