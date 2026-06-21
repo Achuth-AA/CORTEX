@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-base font-sans text-zinc-100 antialiased;
+  margin: 0;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-white/10;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent/60;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/10 bg-white/5 backdrop-blur-xl;
+  }
+  /* Brand / heading gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-glow via-accent to-accent-violet bg-clip-text text-transparent;
+  }
+  .panel {
+    @apply border border-white/5 bg-panel;
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent to-accent-violet
+      px-5 py-2.5 font-semibold text-white shadow-glow transition-all duration-200
+      hover:brightness-110 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 px-5 py-2.5
+      font-semibold text-zinc-200 transition-all duration-200 hover:border-accent hover:text-accent active:scale-95;
+  }
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-base;
+  }
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-zinc-100
+      outline-none transition-all placeholder:text-zinc-500 focus:border-accent focus:ring-2 focus:ring-accent/30;
+  }
+}
+
+/* Floating-label group */
+.float-group {
+  @apply relative;
+}
+.float-group label {
+  @apply pointer-events-none absolute left-4 top-3.5 text-sm text-zinc-500 transition-all duration-200;
+}
+.float-group input:focus ~ label,
+.float-group input:not(:placeholder-shown) ~ label {
+  @apply top-1.5 text-[11px] font-semibold text-accent;
+}
+
+/* Animated aurora backdrop — drop behind any full-screen surface */
+.aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora::before,
+.aurora::after {
+  content: '';
+  position: absolute;
+  width: 55vw;
+  height: 55vw;
+  border-radius: 9999px;
+  filter: blur(130px);
+  opacity: 0.4;
+  animation: blob 22s ease-in-out infinite;
+}
+.aurora::before {
+  top: -15%;
+  left: -10%;
+  background: radial-gradient(circle, #a855f7 0%, transparent 65%);
+}
+.aurora::after {
+  bottom: -20%;
+  right: -10%;
+  background: radial-gradient(circle, #7e22ce 0%, transparent 65%);
+  animation-delay: 7s;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+.animate-shake {
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
