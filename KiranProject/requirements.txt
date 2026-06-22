@@ -1,0 +1,15 @@
+# ARISE reimplementation — Python dependencies
+# Install torch CPU wheel separately if needed:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch>=2.2
+numpy
+scipy
+scikit-learn
+networkx
+matplotlib
+pandas
+# notebooks
+jupyter
+nbformat
+nbconvert
+ipykernel

@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "cora",
+    "name": "Cora",
+    "num_nodes": 2708,
+    "auc": 0.8792
+  },
+  {
+    "slug": "synthetic",
+    "name": "Synthetic-SBM",
+    "num_nodes": 1500,
+    "auc": 0.9385
+  }
+]
