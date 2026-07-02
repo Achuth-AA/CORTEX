@@ -1,0 +1,839 @@
+// ------------------------------------------
+// Color Variables (shared)
+// ------------------------------------------
+$primary-blue: #1a73e8;
+$primary-blue-dark: #1557b0;
+$primary-blue-light: #e8f0fe;
+$text-primary: #202124;
+$text-secondary: #5f6368;
+$border-color: #dadce0;
+$background-light: #f8f9fa;
+$background-white: #fff;
+
+// Input-specific
+$google-blue: #4285f4;
+$google-blue-dark: #3367d6;
+$google-red: #ea4335;
+$google-red-dark: #d33426;
+
+// Analysis-specific
+$success-green: #1e8e3e;
+$success-green-bg: #e6f4ea;
+$error-red: #d93025;
+$error-red-bg: #fce8e6;
+
+// Match score specific
+$match-high-color: #1e7e34;
+$match-high-bg: #e6f4ea;
+$match-medium-color: #b06000;
+$match-medium-bg: #fef7e0;
+$match-low-color: #c5221f;
+$match-low-bg: #fce8e6;
+
+// ------------------------------------------
+// Base button style (shared)
+// ------------------------------------------
+%action-button-base {
+  min-width: 100px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  text-transform: none;
+  letter-spacing: 0.25px;
+}
+
+// ============================================
+// BUG INPUT - Search + Template
+// All styles scoped under the component root
+// ============================================
+.bug-input {
+
+  // ------------------------------------------
+  // SEARCH CARD - All dropdowns in single row
+  // ------------------------------------------
+  .bi-search-card {
+    margin: 20px;
+    padding: 16px 20px;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    background: $background-white;
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.1), 0 2px 6px rgba(60, 64, 67, 0.08);
+  }
+
+  .bi-search-fields {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 16px;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .bi-filter-field {
+    flex: 1 1 0;
+    min-width: 0;
+    font-size: 14px;
+  }
+
+  // Search Buttons
+  .bi-search-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+
+  .bi-generate-btn {
+    @extend %action-button-base;
+    height: 38px;
+    min-width: 100px;
+    background-color: $google-blue;
+    color: $background-white;
+
+    &:hover {
+      background-color: $google-blue-dark;
+      box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+    }
+
+    &:disabled {
+      background-color: $border-color;
+      color: $text-secondary;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  .bi-clear-btn {
+    @extend %action-button-base;
+    height: 38px;
+    min-width: 80px;
+    background-color: $google-red;
+    color: $background-white;
+    border: none;
+
+    &:hover {
+      background-color: $google-red-dark;
+      box-shadow: 0 2px 6px rgba(217, 48, 37, 0.3);
+    }
+  }
+
+  // ------------------------------------------
+  // TEMPLATE CARD
+  // ------------------------------------------
+  .bi-template-card {
+    margin: 20px;
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    background: $background-white;
+    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.1), 0 4px 8px rgba(60, 64, 67, 0.08);
+  }
+
+  .bi-template-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    align-items: start;
+    padding: 20px;
+  }
+
+  .bi-col-full {
+    grid-column: 1 / -1;
+  }
+
+  .bi-col-2 {
+    grid-column: span 2;
+  }
+
+  .bi-col-3 {
+    grid-column: span 3;
+  }
+
+  .bi-description-field textarea {
+    height: 400px;
+    min-height: 240px;
+    overflow: auto;
+    resize: vertical;
+  }
+
+  .bi-template-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 8px;
+  }
+
+  // AI Suggested Title Button - Outlined style
+  .bi-suggest-btn {
+    @extend %action-button-base;
+    height: 45px;
+    background-color: $background-white;
+    color: $primary-blue;
+    border: 1px solid $border-color;
+    align-self: auto;
+
+    &:hover {
+      background-color: $primary-blue-light;
+      border-color: $primary-blue;
+    }
+
+    &:active {
+      background-color: darken($primary-blue-light, 5%);
+    }
+  }
+
+  // ------------------------------------------
+  // AI SUGGESTED TITLE BOX
+  // ------------------------------------------
+  .bi-suggestion-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 4px;
+    padding: 16px 20px;
+    border: 1px solid $primary-blue-light;
+    border-left: 4px solid $primary-blue;
+    border-radius: 10px;
+    background: linear-gradient(135deg, $primary-blue-light 0%, $background-white 100%);
+    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.1), 0 2px 6px rgba(60, 64, 67, 0.06);
+  }
+
+  .bi-suggestion-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .bi-suggestion-icon {
+    flex-shrink: 0;
+    color: $primary-blue;
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .bi-suggestion-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .bi-suggestion-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: $primary-blue;
+  }
+
+  .bi-suggestion-value {
+    margin: 4px 0 0 0;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: $text-primary;
+    word-break: break-word;
+  }
+
+  .bi-suggestion-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .bi-suggestion-cancel {
+    @extend %action-button-base;
+    height: 36px;
+    min-width: 90px;
+    background-color: $background-white;
+    color: $text-secondary;
+    border: 1px solid $border-color;
+
+    &:hover {
+      background-color: $background-light;
+      color: $text-primary;
+    }
+  }
+
+  .bi-suggestion-agree {
+    @extend %action-button-base;
+    height: 36px;
+    min-width: 90px;
+    background-color: $primary-blue;
+    color: $background-white;
+
+    &:hover {
+      background-color: $primary-blue-dark;
+      box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+    }
+  }
+
+  // ------------------------------------------
+  // FORM FIELD OVERRIDES
+  // ------------------------------------------
+  ::ng-deep mat-form-field .mat-mdc-form-field-flex {
+    // stylelint-disable-next-line declaration-no-important -- Needed to override default MDC styling
+    background-color: transparent !important;
+  }
+
+  .bi-search-input-wrap {
+    padding: 10px 12px;
+    border-bottom: 1px solid $border-color;
+  }
+
+  .bi-search-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: $text-primary;
+
+    &::placeholder {
+      color: $text-secondary;
+    }
+  }
+
+  // Hover effect toggled by addHoverClass()/removeHoverClass()
+  .bi-hover-bg {
+    background-color: $background-light;
+  }
+
+  // ------------------------------------------
+  // RESPONSIVE DESIGN
+  // ------------------------------------------
+  @media (max-width: 1400px) {
+    .bi-search-fields {
+      flex-wrap: wrap;
+    }
+
+    .bi-filter-field {
+      flex: 1 1 calc(25% - 16px);
+      min-width: 150px;
+    }
+
+    .bi-search-actions {
+      flex: 0 0 auto;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .bi-filter-field {
+      flex: 1 1 calc(33% - 16px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bi-search-fields {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .bi-filter-field {
+      flex: 1 1 100%;
+    }
+
+    .bi-search-actions {
+      margin-top: 12px;
+      justify-content: flex-start;
+    }
+
+    .bi-template-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .bi-col-2,
+    .bi-col-3 {
+      grid-column: 1;
+    }
+
+    .bi-suggestion-box {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .bi-suggestion-actions {
+      justify-content: flex-end;
+    }
+  }
+}
+
+// ============================================
+// BUG ANALYSIS
+// All styles scoped under the component root
+// ============================================
+.bug-analysis {
+
+  // ------------------------------------------
+  // AI ANALYSIS CARD
+  // ------------------------------------------
+  .ba-ai-analysis-card {
+    margin: 20px;
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    background: $background-white;
+    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.1), 0 4px 8px rgba(60, 64, 67, 0.08);
+    padding: 24px;
+  }
+
+  // Loading Container
+  .ba-loading-container {
+    text-align: center;
+    padding: 40px 24px;
+  }
+
+  .ba-loading-text {
+    font-size: 16px;
+    color: $text-primary;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .ba-loading-subtext {
+    font-size: 14px;
+    color: $text-secondary;
+    margin-top: 12px;
+  }
+
+  .ba-progress-text {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 14px;
+    color: $primary-blue;
+    font-weight: 600;
+  }
+
+  // ------------------------------------------
+  // SECTION HEADINGS
+  // ------------------------------------------
+  .ba-section-heading {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: $text-primary;
+    margin: 28px 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid $primary-blue-light;
+  }
+
+  .ba-ai-summary-image {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 12px;
+  }
+
+  // Summary Output
+  .ba-summary-output {
+    background: linear-gradient(135deg, $background-light 0%, #f1f3f4 100%);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    border-left: 4px solid $primary-blue;
+  }
+
+  .ba-summary-line {
+    font-size: 14px;
+    line-height: 1.7;
+    color: $text-primary;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .ba-workaround-section {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px dashed $border-color;
+    font-size: 14px;
+    color: $text-primary;
+
+    strong {
+      color: $success-green;
+      font-weight: 600;
+    }
+  }
+
+  // ------------------------------------------
+  // TABLE - Duplicates
+  // ------------------------------------------
+  .ba-table-container {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid $border-color;
+    box-shadow: 0 2px 8px rgba(60, 64, 67, 0.08);
+  }
+
+  .ba-duplicates-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+
+    th, td {
+      padding: 14px 18px;
+      text-align: left;
+    }
+
+    thead {
+      th {
+        background: linear-gradient(180deg, #f8f9fa 0%, #f1f3f4 100%);
+        font-weight: 600;
+        color: $text-primary;
+        white-space: nowrap;
+        border-bottom: 2px solid $primary-blue;
+        text-transform: uppercase;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+      }
+    }
+
+    tbody {
+      tr {
+        transition: all 0.2s ease;
+        border-bottom: 1px solid #eef0f2;
+
+        &:hover {
+          background: linear-gradient(90deg, $primary-blue-light 0%, rgba(232, 240, 254, 0.5) 100%);
+          transform: scale(1.002);
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &:nth-child(even) {
+          background-color: #fafbfc;
+
+          &:hover {
+            background: linear-gradient(90deg, $primary-blue-light 0%, rgba(232, 240, 254, 0.5) 100%);
+          }
+        }
+      }
+    }
+  }
+
+  // Table Cell Styles
+  .ba-title-cell {
+    max-width: 280px;
+  }
+
+  .ba-bug-link {
+    color: $primary-blue;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $primary-blue-dark;
+      text-decoration: underline;
+    }
+  }
+
+  .ba-status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+
+    &.high-match {
+      background-color: $match-high-bg;
+      color: $match-high-color;
+    }
+
+    &.medium-match {
+      background-color: $match-medium-bg;
+      color: $match-medium-color;
+    }
+
+    &.low-match {
+      background-color: $match-low-bg;
+      color: $match-low-color;
+    }
+  }
+
+  .ba-match-score {
+    font-weight: 700;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 6px;
+      background-color: currentColor;
+    }
+
+    &.high-match {
+      color: $match-high-color;
+    }
+
+    &.medium-match {
+      color: $match-medium-color;
+    }
+
+    &.low-match {
+      color: $match-low-color;
+    }
+  }
+
+  .ba-priority-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $text-primary;
+  }
+
+  .ba-date-cell {
+    color: $text-secondary;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  .ba-id-cell {
+    font-family: 'Roboto Mono', 'Consolas', monospace;
+    font-size: 13px;
+    color: $text-secondary;
+  }
+
+  // ------------------------------------------
+  // ACTION BUTTONS IN TABLE
+  // ------------------------------------------
+  .ba-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-transform: none;
+    letter-spacing: 0.25px;
+    border: none;
+    min-width: 80px;
+  }
+
+  .ba-update-btn {
+    background-color: $primary-blue;
+    color: $background-white;
+
+    &:hover {
+      background-color: $primary-blue-dark;
+    }
+
+    &:active {
+      background-color: darken($primary-blue-dark, 5%);
+    }
+  }
+
+  .ba-process-btn {
+    background-color: #ff9800;
+    color: $background-white;
+
+    &:hover {
+      background-color: #f57c00;
+    }
+
+    &:active {
+      background-color: #ef6c00;
+    }
+  }
+
+  .ba-action-text {
+    color: $text-secondary;
+    font-size: 13px;
+    font-style: italic;
+  }
+
+  // ------------------------------------------
+  // FEEDBACK ICONS
+  // ------------------------------------------
+  .ba-feedback-cell {
+    width: 100px;
+  }
+
+  .ba-feedback-icons {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ba-feedback-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    color: $text-secondary;
+    border: 1.5px solid transparent;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+
+    &.ba-thumbs-up:hover {
+      color: $success-green;
+      background-color: $success-green-bg;
+      border-color: $success-green;
+      box-shadow: 0 3px 8px rgba(30, 142, 62, 0.25);
+    }
+
+    &.ba-thumbs-down:hover {
+      color: $error-red;
+      background-color: $error-red-bg;
+      border-color: $error-red;
+      box-shadow: 0 3px 8px rgba(217, 48, 37, 0.25);
+    }
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  // ------------------------------------------
+  // FEEDBACK SECTION
+  // ------------------------------------------
+  .ba-feedback-section {
+    margin-top: 28px;
+    padding: 20px 24px;
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    background: $background-light;
+  }
+
+  .ba-feedback-heading {
+    margin: 0 0 14px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: $text-primary;
+  }
+
+  .ba-feedback-field {
+    width: 100%;
+    font-size: 14px;
+
+    textarea {
+      resize: vertical;
+      min-height: 64px;
+    }
+  }
+
+  .ba-feedback-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .ba-submit-feedback-btn {
+    @extend %action-button-base;
+    height: 38px;
+    padding: 8px 20px;
+    background-color: $primary-blue;
+    color: $background-white;
+
+    &:hover {
+      background-color: $primary-blue-dark;
+      box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3);
+    }
+
+    &:disabled {
+      background-color: $border-color;
+      color: $text-secondary;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  // ------------------------------------------
+  // FOOTER ACTION BUTTONS
+  // ------------------------------------------
+  .ba-footer-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 32px;
+    padding: 24px 0 8px 0;
+    border-top: 1px solid $border-color;
+  }
+
+  .ba-btn-primary {
+    @extend %action-button-base;
+    min-width: auto;
+    height: 38px;
+    padding: 8px 20px;
+    background-color: $primary-blue;
+    color: $background-white;
+
+    &:hover {
+      background-color: $primary-blue-dark;
+    }
+  }
+
+  .ba-btn-discard {
+    @extend %action-button-base;
+    min-width: auto;
+    height: 38px;
+    padding: 8px 20px;
+    background-color: $background-white;
+    color: $text-primary;
+    border: 1px solid $border-color;
+
+    &:hover {
+      background-color: $background-light;
+    }
+  }
+
+  // ------------------------------------------
+  // RESPONSIVE DESIGN
+  // ------------------------------------------
+  @media (max-width: 768px) {
+    .ba-footer-actions {
+      flex-direction: column;
+
+      button {n
+        width: 100%;
+      }
+    }
+
+    .ba-duplicates-table {
+      font-size: 12px;
+
+      th, td {
+        padding: 10px 12px;
+      }
+    }
+
+    .ba-feedback-actions {
+      justify-content: stretch;
+
+      .ba-submit-feedback-btn {
+        width: 100%;
+      }
+    }
+  }
+}
